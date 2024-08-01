@@ -8,7 +8,7 @@
 	// Example:
 	"AAA Test in flutter": {
 		"scope": "dart",
-		"prefix": "aaa",
+		"prefix": "aaaTest",
 		"body": [
 			"  test('should ${1}', () async {",
 			"    // arrange",

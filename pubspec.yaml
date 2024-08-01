@@ -40,8 +40,8 @@ dependencies:
   equatable: ^2.0.5
   dartz: ^0.10.1
   shared_preferences: ^2.2.3
-  connectivity_plus: ^6.0.4
   http: ^1.2.2
+  data_connection_checker_nulls: ^0.0.2
 
 dev_dependencies:
   flutter_test:

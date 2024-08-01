@@ -1,12 +1,14 @@
 import 'package:clean_arch/core/errors/exceptions.dart';
 import 'package:clean_arch/core/errors/failures.dart';
-import 'package:clean_arch/core/platform/network_info.dart';
+import 'package:clean_arch/core/network/network_info.dart';
 import 'package:clean_arch/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:clean_arch/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
 import 'package:clean_arch/features/number_trivia/data/models/number_trivia_model.dart';
 import 'package:clean_arch/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:clean_arch/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 import 'package:dartz/dartz.dart';
+
+typedef _ConcreateOrRandomChooser = Future<NumberTriviaModel> Function();
 
 class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   final NumberTriviaRemoteDataSource remoteDataSource;
@@ -18,8 +20,6 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
       required this.localDataSource,
       required this.networkInfo});
 
-
-      
   @override
   Future<Either<Failure, NumberTrivia>> getConcreteNumberTrivia(
       int number) async {
@@ -36,7 +36,7 @@ class NumberTriviaRepositoryImpl implements NumberTriviaRepository {
   }
 
   Future<Either<Failure, NumberTrivia>> _getTrivia(
-      Future<NumberTriviaModel> Function() getConcreteOrRandom) async {
+      _ConcreateOrRandomChooser getConcreteOrRandom) async {
     if (await networkInfo.isConnected) {
       try {
         final remoteTrivia = await getConcreteOrRandom();
