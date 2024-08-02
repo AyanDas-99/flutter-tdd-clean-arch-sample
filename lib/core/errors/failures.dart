@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {
+sealed class Failure extends Equatable {
   final List? properties;
 
   const Failure({this.properties});
@@ -17,3 +17,5 @@ class ServerFailure extends Failure {
 class CacheFailure extends Failure {
   const CacheFailure({super.properties});
 }
+
+class InvalidInputFailure extends Failure {}
