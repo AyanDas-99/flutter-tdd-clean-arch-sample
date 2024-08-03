@@ -1,16 +1,13 @@
-# clean_arch
+# Flutter clean architecture - Sample Project
 
-A new Flutter project.
+## Description
+<b>Number Trivia</b> project that gets a trivia for the provided or random number from [Numbers API](numbersapi.com).
 
-## Getting Started
+The projects follows the <b>clean architecture</b> principles and was created following <b>TDD</b> methodology.
 
-This project is a starting point for a Flutter application.
+## Reference
+Refer [this blog](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/) from Reso Coder for complete guide on how to implement the clean architecture in your next project.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+- Get trivia from concrete number
+- Get trivia for random number
