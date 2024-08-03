@@ -8,7 +8,9 @@ import 'package:clean_arch/features/number_trivia/domain/usecases/get_concrete_n
 import 'package:clean_arch/features/number_trivia/domain/usecases/get_random_number_trivia.dart';
 import 'package:clean_arch/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
 import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -51,7 +53,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => InputConverter());
 
   sl.registerLazySingleton<NetworkInfo>(
-    () => NetworkInfoImpl(sl()),
+    () => kIsWeb ? NetworkInfoWebImpl(sl()) : NetworkInfoImpl(sl()),
   );
 
   //! External
@@ -64,4 +66,7 @@ Future<void> init() async {
 
   // DataConnectionChecker
   sl.registerLazySingleton(() => DataConnectionChecker());
+
+  // InternetConnection
+  sl.registerLazySingleton(() => InternetConnection());
 }

@@ -33,6 +33,7 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
       Uri.parse(url),
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
       },
     );
     if (result.statusCode == 200) {
